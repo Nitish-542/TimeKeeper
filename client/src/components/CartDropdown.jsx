@@ -39,7 +39,7 @@ const CartDropdown = () => {
                         <p>Category: {item.category}</p>
                       </div>
                       <span>
-                        {item.quantity} x ₦{item.price}
+                        {item.quantity} x ${item.price}
                       </span>
                     </li>
                   ))}

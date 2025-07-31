@@ -19,7 +19,6 @@ const Orders = () => {
           },
         }
       );
-
       setOrders(data);
     } catch (error) {
       console.log("Error fetching orders:", error);
@@ -61,8 +60,11 @@ const Orders = () => {
                         order.products.map((product, index) => (
                           <tr
                             key={
-                              product.productId?._id || product.productId?.slug || "unknown"
-                            }>
+                              product.productId?._id ||
+                              product.productId?.slug ||
+                              "unknown"
+                            }
+                          >
                             <td>{index + 1}</td>
                             <td>
                               {product.productId
@@ -70,14 +72,13 @@ const Orders = () => {
                                 : "Product not found"}
                             </td>
                             <td>
-                              ₦
-                              {(product.productId && product.productId.price
-                                ? product.productId.price
-                                : 0) *
-                                product.quantity.toLocaleString("en-US", {
-                                  minimumFractionDigits: 2,
-                                  maximumFractionDigits: 2,
-                                })}
+                              {(
+                                (product.productId?.price || 0) *
+                                product.quantity
+                              ).toLocaleString("en-US", {
+                                style: "currency",
+                                currency: "USD", // Change to your desired currency
+                              })}
                             </td>
                             <td>{product.quantity}</td>
                             <td>{order?.payment}</td>
