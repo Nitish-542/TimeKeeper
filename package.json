@@ -1,0 +1,25 @@
+{
+  "name": "timekeeper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon backend/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run dev --prefix ./client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nitish-542/TimeKeeper"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Nitish-542/TimeKeeper/issues"
+  },
+  "homepage": "https://github.com/Nitish-542/TimeKeeper#readme",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

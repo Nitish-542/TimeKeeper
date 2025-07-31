@@ -1,0 +1,41 @@
+{
+  "name": "theadirebrand",
+  "version": "1.0.0",
+  "description": "ecommerce api",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run dev --prefix ./client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdayatSanni/theadirebrand.git"
+  },
+  "keywords": [],
+  "author": "idayat sanni",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/IdayatSanni/theadirebrand/issues"
+  },
+  "homepage": "https://github.com/IdayatSanni/theadirebrand#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.3",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-formidable": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mdb-react-ui-kit": "^9.0.0",
+    "mdb-ui-kit": "^8.2.0",
+    "mongoose": "^8.9.6",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "react-bootstrap": "^2.10.9",
+    "slugify": "^1.6.6"
+  }
+}
