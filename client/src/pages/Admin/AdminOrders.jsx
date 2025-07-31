@@ -30,7 +30,6 @@ const AdminOrders = () => {
         }
       );
       setOrders(data);
-      
     } catch (error) {
       console.log(error);
       toast.error("Error fetching orders.");
@@ -77,53 +76,46 @@ const AdminOrders = () => {
                   <table className='table'>
                     <thead>
                       <tr>
-                        <th scope='col'>#</th>
-                        <th scope='col'>Buyer</th>
-                        <th scope='col'>Product Name</th>
-                        <th scope='col'>Price</th>
-                        <th scope='col'>Quantity</th>
-                        <th scope='col'>Total</th>
-                        <th scope='col'>Payment</th>
-                        <th scope='col'>Order Status</th>
+                        <th>#</th>
+                        <th>Buyer</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                        <th>Payment</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       {o?.products?.map((p, index) => (
-                        <tr
-                          key={
-                            p.productId?._id || p.productId?.slug || "unknown"
-                          }>
+                        <tr key={p.productId?._id || index}>
                           <td>{index + 1}</td>
-                          <td>
-                            {o?.buyer ? o.buyer.name : o?.guestName || "Guest"}
-                          </td>
-
+                          <td>{o?.buyer ? o.buyer.name : o?.guestName || "Guest"}</td>
+                          <td>{p.productId?.name || "N/A"}</td>
                           <td>
                             {p.productId
-                              ? p.productId.name
-                              : "Product not found"}
-                          </td>
-                          <td>
-                            {p.productId ? `₦${p.productId.price}` : "₦0"}
+                              ? Number(p.productId.price).toLocaleString("en-US", {
+                                  style: "currency",
+                                  currency: "USD",
+                                })
+                              : "$0.00"}
                           </td>
                           <td>{p.quantity}</td>
                           <td>
-                            ₦
-                            {(p.productId && p.productId.price
-                              ? p.productId.price
-                              : 0) *
-                              p.quantity.toLocaleString("en-US", {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2,
-                              })}
+                            {(
+                              (p.productId?.price || 0) * p.quantity
+                            ).toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            })}
                           </td>
-
                           <td>{o.payment}</td>
                           <td>
                             <Select
                               onChange={(value) => handleChange(o._id, value)}
                               defaultValue={o?.status}
-                              style={{ width: "100%" }}>
+                              style={{ width: "100%" }}
+                            >
                               {status.map((s, i) => (
                                 <Option key={i} value={s}>
                                   {s}
